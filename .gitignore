@@ -1,0 +1,6 @@
+# folders to exclude
+
+venv/
+fine_tuned_model.zip
+fine_tuned_model/
+models/

@@ -1,0 +1,40 @@
+item {
+    name: "2",
+    id: 1,
+    display_name: "2"
+}
+item {
+    name: "Goggle",
+    id: 2,
+    display_name: "Goggle"
+}
+item {
+    name: "Helmet",
+    id: 3,
+    display_name: "Helmet"
+}
+item {
+    name: "Person",
+    id: 4,
+    display_name: "Person"
+}
+item {
+    name: "Shoe",
+    id: 5,
+    display_name: "Shoe"
+}
+item {
+    name: "Vest",
+    id: 6,
+    display_name: "Vest"
+}
+item {
+    name: "glove",
+    id: 7,
+    display_name: "glove"
+}
+item {
+    name: "head",
+    id: 8,
+    display_name: "head"
+}
