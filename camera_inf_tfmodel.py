@@ -19,7 +19,7 @@ PATH_TO_MODEL_DIR = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/f
 PATH_TO_LABELS = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/ppe_label_map.pbtxt'
 
 # PROVIDE THE MINIMUM CONFIDENCE THRESHOLD
-MIN_CONF_THRESH = 0.3
+MIN_CONF_THRESH = 0.5
 
 # LOAD THE MODEL
 print('Loading model...', end='')

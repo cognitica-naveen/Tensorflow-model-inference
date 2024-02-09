@@ -87,9 +87,10 @@ def process_video(input_path, output_path):
     cv2.destroyAllWindows()
 
 # PROVIDE PATH TO VIDEO FILE
-VIDEO_PATH = '/home/cognitica-i7-13thgen/NPS/temp_camera_tf/30FPS_longoutpy.avi'
+VIDEO_PATH = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/30FP_Near-soutpy.avi'
 
 
 # Process the video and save annotated version
 output_video_path = 'annotated_video.mp4'
 process_video(VIDEO_PATH, output_video_path)
+
