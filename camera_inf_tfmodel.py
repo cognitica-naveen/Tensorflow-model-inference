@@ -44,7 +44,9 @@ category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABE
 # Function to process each frame and save annotated video
 def process_video(output_path, input_path=0):
     # Open the video file
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(input_path)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 
     # Check if camera opened successfully
     if (cap.isOpened() == False): 
@@ -76,6 +78,7 @@ def process_video(output_path, input_path=0):
         ret, image_np = cap.read()
         if not ret:
             break
+        image_np = cv2.rotate(image_np, cv2.ROTATE_180)
         
 
         new_frame_time = time.time()
@@ -89,7 +92,6 @@ def process_video(output_path, input_path=0):
 
         # Run object detection
         detections = detect_fn(image_expanded)
-
         num_detections = int(detections.pop('num_detections'))
         detections = {key: value[0, :num_detections].numpy() for key, value in detections.items()}
         detections['num_detections'] = num_detections
@@ -100,6 +102,7 @@ def process_video(output_path, input_path=0):
             box = detections['detection_boxes'][i]
             class_id = detections['detection_classes'][i]
             score = detections['detection_scores'][i]
+            # print(class_id, score)
 
             if score >= MIN_CONF_THRESH:
                 y_min, x_min, y_max, x_max = box
@@ -123,7 +126,7 @@ def process_video(output_path, input_path=0):
         lineType)
 	
         # Save annotated frame to the output video
-        cv2.imshow('frame',image_np)
+        cv2.imshow('old_frame',image_np)
         out.write(image_np)
 
         # Press Q on keyboard to stop recording

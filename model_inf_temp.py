@@ -13,13 +13,13 @@ for gpu in gpus:
     tf.config.experimental.set_memory_growth(gpu, True)
 
 # PROVIDE PATH TO MODEL DIRECTORY
-PATH_TO_MODEL_DIR = '/home/cognitica-i7-13thgen/NPS/temp_camera_tf/fine_tuned_model/content/fine_tuned_model/saved_model'
+PATH_TO_MODEL_DIR = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/fine_tuned_model/content/fine_tuned_model/saved_model'
 
 # PROVIDE PATH TO LABEL MAP
-PATH_TO_LABELS = '/home/cognitica-i7-13thgen/NPS/temp_camera_tf/ppe_label_map.pbtxt'
+PATH_TO_LABELS = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/ppe_label_map.pbtxt'
 
 # PROVIDE THE MINIMUM CONFIDENCE THRESHOLD
-MIN_CONF_THRESH = 0.3
+MIN_CONF_THRESH = 0.4
 
 # LOAD THE MODEL
 print('Loading model...', end='')
@@ -78,7 +78,7 @@ def process_video(input_path, output_path):
                 cv2.rectangle(image_np, (x_min, y_min), (x_max, y_max), (0, 255, 0), 2)
                 label = f'{category_index[class_id]["name"]} {int(score * 100)}%'
                 cv2.putText(image_np, label, (x_min, y_min - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
-
+        cv2.imshow('image_np',image_np)
         # Save annotated frame to the output video
         out.write(image_np)
 
@@ -87,9 +87,10 @@ def process_video(input_path, output_path):
     cv2.destroyAllWindows()
 
 # PROVIDE PATH TO VIDEO FILE
-VIDEO_PATH = '/home/cognitica-i7-13thgen/NPS/temp_camera_tf/30FPS_longoutpy.avi'
+VIDEO_PATH = '/home/cognitica-i7-13thgen/NPS/Tensorflow-model-inference/v2.avi'
 
 
 # Process the video and save annotated version
-output_video_path = 'annotated_video.mp4'
+output_video_path = 'v2_old.mp4'
 process_video(VIDEO_PATH, output_video_path)
+
